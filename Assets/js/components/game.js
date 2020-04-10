@@ -3,15 +3,18 @@
 class Game
 {
 
+   _configs;
    _canvas;
    _context;
    _engine;
+   _controllers;
 
-   _configs;
    _images;
 
    constructor(){
-      this._images = new Images();
+      this._images      = new Images();
+      this._controllers = new Controllers();
+      this._controllers.init();
    }
 
    load(type, data){
@@ -26,6 +29,9 @@ class Game
             this._images.loader(image);
          }
       }
+      if(type === "controller"){
+         this._controllers.loader(data);
+      }
    }
 
    init(){
@@ -33,6 +39,12 @@ class Game
       this._context = this._canvas.context();
 
       this._canvas = new Engine();
+
+   }
+
+   start(){
+      cl("aqui");
+      this._controllers.listener();
    }
 
 

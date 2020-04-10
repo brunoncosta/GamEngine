@@ -8,7 +8,7 @@ class Canvas
 
    constructor(configs){
       this._$game   = document.getElementById(configs.canvas.id);
-      this._context = this.$game.getContext(configs.canvas.context);
+      this._context = this._$game.getContext(configs.canvas.context);
    }
 
    context(){
