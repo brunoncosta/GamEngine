@@ -39,11 +39,9 @@ class Game
       this._context = this._canvas.context();
 
       this._canvas = new Engine();
-
    }
 
    start(){
-      cl("aqui");
       this._controllers.listener();
    }
 
