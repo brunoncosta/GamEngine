@@ -2,27 +2,27 @@
 
 class Engine
 {
+   _configs;
 
    _gravity;
    _gravitySpeed;
    _ground;
 
    constructor(configs){
-      this.configs = configs;
+      this._configs = configs;
    }
 
    init(){
-      this._gravity      = this.configs.engine.gravity;
+      this._gravity      = this._configs.engine.gravity;
       this._gravitySpeed = 0;
       this._ground = {
-         default: this.configs.engine.ground.y,
-         y: this.configs.engine.ground.y
+         default: this._configs.engine.ground.y,
+         y: this._configs.engine.ground.y
       };
    }
 
    groundDefault(set = null){
       return set != null ? this._ground.default = set : this._ground.default;
-
    }
 
    ground(set = null){
@@ -32,11 +32,7 @@ class Engine
       return set != null ? this._ground.y = set : this._ground.y;
    }
 
-   gravity(y, jump = false){
-
-      if(jump === true){
-         return y;
-      }
+   gravity(y){
 
       if(this.ground() <= y){
          this._gravitySpeed = 0
