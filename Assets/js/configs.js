@@ -11,5 +11,51 @@ const configs =
       ground: {
          y: 0
       }
+   },
+   scenes: {
+      sky: {
+         name: "sky",
+         draw: {
+            pattern: true,
+            fillRect: true,
+            image: false,
+            static: {
+               1: "Assets/img/bg/sky.png"
+            }
+         },
+         position:{
+            x: 0,
+            y: 0,
+            width: 500,
+            height: 500,
+         },
+         translate: {
+            flag: false,
+            x: 0,
+            y: 0
+         }
+      },
+      floor: {
+         name: "floor",
+         draw: {
+            pattern: true,
+            fillRect: true,
+            image: false,
+            static: {
+               1: "Assets/img/bg/floor.png"
+            }
+         },
+         position:{
+            x: 0,
+            y: 0,
+            width: 500,
+            height: 500,
+         },
+         translate: {
+            flag: false,
+            x: 0,
+            y: 0
+         }
+      },
    }
 };

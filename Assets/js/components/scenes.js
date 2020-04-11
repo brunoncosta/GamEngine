@@ -15,22 +15,30 @@ class Scenes
    }
 
    loader(data){
-      this._data[data.name] = this.set(data.type);
+      this._data[data.name] = this.set(data);
+      return this._data;
    }
 
-   set(type){
+   images(object){
+      if(object.static != undefined){
+         return object.static[1];
+      }
+   }
+
+   set(data){
       const image = new Image();
-      image.src = this.this._configs.scenes[type].image;
+      image.src = this.images(data.draw);
 
       return {
-         image : image,
-         position : this.this._configs.scenes[type].position,
-         translate : this.this._configs.scenes[type].translate
+         image     : image,
+         draw      : data.draw,
+         position  : data.position,
+         translate : data.translate
       };
    }
 
-   get(value){
-      return this._data[value];
+   get(data){
+      return this._data[data];
    }
 
 }
