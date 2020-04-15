@@ -24,10 +24,6 @@ class Draw
       this._context.clearRect(0, 0, this._canvas.width(), this._canvas.height());
    }
 
-   loop(){
-      requestAnimationFrame(this.start.bind(this));
-   }
-
    pattern(object){
       this._context.fillStyle = this._context.createPattern(object.image, "repeat");
    }
@@ -43,6 +39,8 @@ class Draw
    }
 
    start(){
+
+      this.clear();
 
       for(let object in this._data){
 
@@ -60,7 +58,7 @@ class Draw
          }
 
          if(this._data[object].draw.image === true){
-            this.image(this._data[object])
+            this.image(this._data[object]);
          }
 
          if(this._data[object].draw.fillRect === true){
@@ -76,7 +74,6 @@ class Draw
 
       }
 
-      this.loop();
    }
 
 }

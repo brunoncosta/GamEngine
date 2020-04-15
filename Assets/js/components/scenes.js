@@ -3,11 +3,11 @@
 class Scenes
 {
 
-   _configs;
+   _canvas;
    _data;
 
-   construtor(configs){
-      this._configs = configs;
+   constructor(canvas){
+      this._canvas = canvas;
    }
 
    init(){
@@ -15,7 +15,15 @@ class Scenes
    }
 
    loader(data){
-      this._data[data.name] = this.set(data);
+      const image = new Image();
+      image.src = this.images(data.draw);
+
+      this._data[data.name] = {
+         image     : image,
+         draw      : data.draw,
+         position  : data.position,
+         translate : data.translate
+      };
       return this._data;
    }
 
@@ -26,15 +34,13 @@ class Scenes
    }
 
    set(data){
-      const image = new Image();
-      image.src = this.images(data.draw);
-
-      return {
-         image     : image,
-         draw      : data.draw,
-         position  : data.position,
-         translate : data.translate
+      this._data[data.name] = {
+         image     : data.image != undefined ? data.image : this._data[data.name].image,
+         draw      : data.draw != undefined ? data.draw : this._data[data.name].draw,
+         position  : data.position != undefined ? data.position : this._data[data.name].position,
+         translate : data.translate != undefined ? data.translate : this._data[data.name].translate
       };
+      return this._data;
    }
 
    get(data){

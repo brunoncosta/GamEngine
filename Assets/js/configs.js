@@ -26,11 +26,11 @@ const configs =
          position:{
             x: 0,
             y: 0,
-            width: 500,
-            height: 500,
+            width: 0,
+            height: 0,
          },
          translate: {
-            flag: false,
+            flag: true,
             x: 0,
             y: 0
          }
@@ -48,11 +48,11 @@ const configs =
          position:{
             x: 0,
             y: 0,
-            width: 500,
-            height: 500,
+            width: 0,
+            height: 0,
          },
          translate: {
-            flag: false,
+            flag: true,
             x: 0,
             y: 0
          }
