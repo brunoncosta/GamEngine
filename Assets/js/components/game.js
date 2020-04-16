@@ -27,7 +27,7 @@ class Game
    }
 
    loader(){
-      this._movement.loader(this._loaded.data);
+      this._movement.loader("data", this._loaded.data);
    }
 
    load(type, data){
@@ -62,6 +62,7 @@ class Game
       this._scenes.init();
 
       this._movement = new Movement();
+      this._movement.init();
 
       this._draw = new Draw(this._canvas);
       this._draw.init();
@@ -71,20 +72,20 @@ class Game
       if(type === "data"){
          this._loaded.data = this._scenes.set(data);
       }
-      if(type === "movement"){
-         this._loaded.movement = data;
+      if(type === "movements"){
+         this._loaded.movement = this._movement.loader("movement", data);
          this._loaded.data = this._movement.set(this._loaded.movement);
       }
    }
 
    frames(){
 
-      this._movement.loader(this._loaded.data);
+      this._movement.loader("data", this._loaded.data);
       this._loaded.data = this._movement.set(this._loaded.movement);
 
       this._draw.loader(this._loaded.data);
       this._draw.start();
-      
+
       requestAnimationFrame(this.frames.bind(this));
    }
 

@@ -15,15 +15,20 @@ class Scenes
    }
 
    loader(data){
-      const image = new Image();
-      image.src = this.images(data.draw);
 
-      this._data[data.name] = {
-         image     : image,
-         draw      : data.draw,
-         position  : data.position,
-         translate : data.translate
-      };
+      for(let object in data){
+
+         const image = new Image();
+         image.src = this.images(data[object].draw);
+
+         this._data[data[object].name] = {
+            image     : image,
+            draw      : data[object].draw,
+            position  : data[object].position,
+            translate : data[object].translate
+         };
+      }
+
       return this._data;
    }
 

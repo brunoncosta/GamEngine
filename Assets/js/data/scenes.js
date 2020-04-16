@@ -1,18 +1,8 @@
 "use strict";
 
-const configs =
-{
-   canvas: {
-      id: "game",
-      context: "2d"
-   },
-   engine: {
-      gravity: 0.5,
-      ground: {
-         y: 0
-      }
-   },
-   scenes: {
+function scenes(game){
+
+   return {
       sky: {
          name: "sky",
          draw: {
@@ -26,8 +16,8 @@ const configs =
          position:{
             x: 0,
             y: 0,
-            width: 0,
-            height: 0,
+            width: game._canvas.width(),
+            height: game._canvas.height()
          },
          translate: {
             flag: true,
@@ -48,14 +38,15 @@ const configs =
          position:{
             x: 0,
             y: 0,
-            width: 0,
-            height: 0,
+            width: game._canvas.width(),
+            height: 64
          },
          translate: {
             flag: true,
             x: 0,
-            y: 0
+            y: game._canvas.height() - 64
          }
-      },
-   }
-};
+      }
+   };
+
+}

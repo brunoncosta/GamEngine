@@ -6,49 +6,19 @@ const game = new Game();
 game.load("configs", configs);
 game.init();
 
+const _scenes = scenes(game);
+
 // "Pre"Load Images
-game.load("images", configs.scenes.sky.draw.static);
-game.load("images", configs.scenes.floor.draw.static);
+game.load("images", _scenes.sky.draw.static);
+game.load("images", _scenes.floor.draw.static);
 
 // Load all the Data
-game.load("data", configs.scenes.sky);
-game.load("data", configs.scenes.floor);
+game.load("data", _scenes);
 
-const sky = {
-   name: "sky",
-   position : {
-      x: 0,
-      y: 0,
-      width: game._canvas.width(),
-      height: game._canvas.height()
-   }
-};
+const _movement = movement(game);
 
-const floor = {
-   name: "floor",
-   position : {
-      x: 0,
-      y: 0,
-      width: game._canvas.width(),
-      height: 64
-   },
-   translate: {
-      x: 0,
-      y: game._canvas.height() - 64
-   }
-};
-
-game.set("data", sky);
-game.set("data", floor);
-
-const floorMovement = {
-   name: "floor",
-   move: "left",
-   value: 2,
-   translate: 2
-};
-
-game.set("movement", floorMovement);
+// Set Movement
+game.set("movements", _movement);
 
 // Start the Dame
 game.start();
