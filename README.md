@@ -1,7 +1,5 @@
 # GameNgine
 
-Game Engine based on [NoNameYet "Dino"](https://gitlab.com/bruno.ncosta9/nonameyet).
-
 ## Built With
 
 * HTML
