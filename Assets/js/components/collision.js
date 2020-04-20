@@ -6,24 +6,52 @@ class Collision
    _configs;
    _data;
 
-   construtor(configs){
-      this._configs = configs;
+   _flag;
+
+   init(){
+      this._flag = false;
    }
 
-   loader(){
-      this._data[data.name] = this.set(data.collision);
+   loader(data){
+      this._data = data;
    }
 
-
-   fromLeft(object){
+   flag(set = null){
+      return set != null ? this._flag = set : this._flag;
    }
 
-   fromRight(object){
+   set(object){
+      for(let data in this._data){
+         if(this._data[data].collision.flag === true){
+            this.fromLeft(object, this._data[data]);
+            this.fromRight(object, this._data[data]);
+            this.fromTop(object, this._data[data]);
+            this.fromBottom(object, this._data[data]);
+         }
+      }
    }
 
-   fromTop(object){
+   fromLeft(object, data){
+      if(object.position.x >= data.position.x && data.collision.left === true){
+         this._flag = true;
+      }
    }
 
-   frombottom(object){
+   fromRight(object, data){
+      if(object.position.x <= data.position.x  && data.collision.right === true){
+         this._flag = true;
+      }
+   }
+
+   fromTop(object, data){
+      if(object.position.y <= data.position.y  && data.collision.top === true){
+         this._flag = true;
+      }
+   }
+
+   fromBottom(object, data){
+      if(object.position.y >= data.position.y  && data.collision.bottom === true){
+         this._flag = true;
+      }
    }
 }

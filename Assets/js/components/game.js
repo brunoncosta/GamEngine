@@ -9,6 +9,7 @@ class Game
    _context;
    _engine;
    _scenes;
+   _collision;
    _movement;
    _draw;
 
@@ -61,6 +62,9 @@ class Game
       this._scenes = new Scenes(this._canvas);
       this._scenes.init();
 
+      this._collision = new Collision();
+      this._collision.init();
+
       this._movement = new Movement();
       this._movement.init();
 
@@ -79,6 +83,7 @@ class Game
    }
 
    frames(){
+      this._collision.flag(false);
 
       this._movement.loader("data", this._loaded.data);
       this._loaded.data = this._movement.set(this._loaded.movement);

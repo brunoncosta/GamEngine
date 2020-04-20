@@ -24,7 +24,7 @@ const configs =
 function scenes(game){
 
    return {
-      sky: {
+      name: {
          name: string,
          draw: {
             pattern: boolean,
@@ -44,6 +44,13 @@ function scenes(game){
             flag: boolean,
             x: float,
             y: float
+         },
+         collision: {
+            flag: boolean,
+            top: boolean,
+            right: boolean,
+            bottom: boolean,
+            left: boolean
          }
       }
    };

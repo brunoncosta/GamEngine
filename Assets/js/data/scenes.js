@@ -46,6 +46,35 @@ function scenes(game){
             x: 0,
             y: game._canvas.height() - 64
          }
+      },
+      box: {
+         name: "box",
+         draw: {
+            pattern: true,
+            fillRect: true,
+            image: false,
+            static: {
+               1: "Assets/img/bg/floor.png"
+            }
+         },
+         position:{
+            x: 0,
+            y: 0,
+            width: game._canvas.width(),
+            height: 64
+         },
+         translate: {
+            flag: true,
+            x: 0,
+            y: game._canvas.height() - 64
+         },
+         collision: {
+            flag: true,
+            top: true,
+            right: true,
+            bottom: true,
+            left: true
+         }
       }
    };
 
