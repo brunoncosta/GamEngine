@@ -1,8 +1,10 @@
 # GameNgine
 
+Developed with JavaScript using Canvas, for 2D Plataformers.
+
 ## Live
 
-[brunoncosta.com](https://www.brunoncosta.com/GAME/gamengine/)
+[brunoncosta.com](https://gamengine.brunoncosta.com)
 
 ## Built With
 
