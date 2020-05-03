@@ -1,6 +1,6 @@
 # GameNgine
 
-Developed with JavaScript using Canvas, for 2D Plataformers.
+Developed with JavaScript using [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API), for 2D Platformer Game Development.
 
 ## Live
 
