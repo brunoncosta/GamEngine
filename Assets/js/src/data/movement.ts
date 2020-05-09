@@ -1,6 +1,4 @@
-"use strict";
-
-function movement(game){
+export function movement(): object{
 
    return {
       layer_1: {

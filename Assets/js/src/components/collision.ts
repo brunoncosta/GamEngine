@@ -1,26 +1,24 @@
-"use strict";
-
-class Collision
+export class Collision
 {
 
-   _configs;
-   _data;
+   protected _configs: any;
+   protected _data: any;
 
-   _flag;
+   protected _flag: boolean = false;
 
-   init(){
-      this._flag = false;
+   public init(): void{
+
    }
 
-   loader(data){
+   public loader(data: any): void{
       this._data = data;
    }
 
-   flag(set = null){
+   public flag(set: boolean | null = null): boolean{
       return set != null ? this._flag = set : this._flag;
    }
 
-   set(object){
+   public set(object: object): void{
       for(let data in this._data){
          if(this._data[data].collision.flag === true){
             this.fromLeft(object, this._data[data]);
@@ -31,27 +29,28 @@ class Collision
       }
    }
 
-   fromLeft(object, data){
+   protected fromLeft(object: any, data: any): void{
       if(object.position.x >= data.position.x && data.collision.left === true){
          this._flag = true;
       }
    }
 
-   fromRight(object, data){
+   protected fromRight(object: any, data: any): void{
       if(object.position.x <= data.position.x  && data.collision.right === true){
          this._flag = true;
       }
    }
 
-   fromTop(object, data){
+   protected fromTop(object: any, data: any): void{
       if(object.position.y <= data.position.y  && data.collision.top === true){
          this._flag = true;
       }
    }
 
-   fromBottom(object, data){
+   protected fromBottom(object: any, data: any): void{
       if(object.position.y >= data.position.y  && data.collision.bottom === true){
          this._flag = true;
       }
    }
+
 }

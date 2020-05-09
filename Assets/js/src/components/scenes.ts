@@ -1,20 +1,18 @@
-"use strict";
-
-class Scenes
+export class Scenes
 {
 
-   _canvas;
-   _data;
+   protected _canvas: any;
+   protected _data: any;
 
-   constructor(canvas){
+   public constructor(canvas: any){
       this._canvas = canvas;
    }
 
-   init(){
-      this._data = new Array();
+   public init(): void{
+      this._data = new Array;
    }
 
-   loader(data){
+   public loader(data: any): object{
 
       for(let object in data){
 
@@ -27,18 +25,19 @@ class Scenes
             position  : data[object].position,
             translate : data[object].translate
          };
+
       }
 
       return this._data;
    }
 
-   images(object){
+   public images(object: any): any{
       if(object.static != undefined){
          return object.static[1];
       }
    }
 
-   set(data){
+   public set(data: any):object{
       this._data[data.name] = {
          image     : data.image != undefined ? data.image : this._data[data.name].image,
          draw      : data.draw != undefined ? data.draw : this._data[data.name].draw,
@@ -48,7 +47,7 @@ class Scenes
       return this._data;
    }
 
-   get(data){
+   public get(data: any): object{
       return this._data[data];
    }
 

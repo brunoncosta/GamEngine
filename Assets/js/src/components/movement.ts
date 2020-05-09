@@ -1,16 +1,14 @@
-"use strict";
-
-class Movement
+export class Movement
 {
 
-   _data;
-   _movement;
+   protected _data!: any;
+   protected _movement: any;
 
-   init(){
-      this._movement = new Array();
+   protected init(): void{
+      this._movement = new Array;
    }
 
-   loader(type, data){
+   protected loader(type: string, data: any){
       if(type === "data"){
          this._data = data;
       }
@@ -22,7 +20,7 @@ class Movement
       }
    }
 
-   set(data){
+   protected set(data: any): object{
 
       for(let object in data){
          if(data[object].move === "left"){
@@ -42,36 +40,36 @@ class Movement
       return this._data;
    }
 
-   position(data){
+   protected position(data: any): number{
       if(data.position.flag == true){
          return data.position.value;
       }
       return 0;
    }
 
-   translate(data){
+   protected translate(data: any): number{
       if(data.translate.flag == true){
          return data.translate.value;
       }
       return 0;
    }
 
-   toLeft(data){
+   protected toLeft(data: any): void{
       this._data[data.name].position.x -= this.position(data);
       this._data[data.name].translate.x -= this.translate(data);
    }
 
-   toRight(data){
+   protected toRight(data: any): void{
       this._data[data.name].position.x += this.position(data);
       this._data[data.name].translate.x += this.translate(data);
    }
 
-   toTop(data){
+   protected toTop(data: any): void{
       this._data[data.name].position.y -= this.position(data);
       this._data[data.name].translate.y -= this.translate(data);
    }
 
-   toBottom(data){
+   protected toBottom(data: any): void{
       this._data[data.name].position.y += this.position(data);
       this._data[data.name].translate.y += this.translate(data);
    }

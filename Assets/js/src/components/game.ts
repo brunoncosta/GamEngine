@@ -1,37 +1,45 @@
-"use strict";
+import { Images } from "./images.js";
+import { Scenes } from "./scenes.js";
+import { Collision } from "./collision.js";
+import { Movement } from "./movement.js";
+import { Controllers } from "./controllers.js";
 
-class Game
+import { Engine } from "./engine.js";
+import { Canvas } from "./canvas.js";
+import { Draw } from "./draw.js";
+
+export class Game
 {
 
-   _configs;
+   protected _configs: any;
 
-   _canvas;
-   _context;
-   _engine;
-   _scenes;
-   _collision;
-   _movement;
-   _draw;
+   protected _canvas: any;
+   protected _context: any;
+   protected _engine: any;
+   protected _scenes: any;
+   protected _collision: any;
+   protected _movement: any;
+   protected _draw: any;
 
-   _images;
-   _controllers;
+   protected _images: any;
+   protected _controllers: any;
 
-   _loaded = {
-      data: null,
-      movement: null
+   protected _loaded = {
+      data: {},
+      movement: {}
    };
 
-   constructor(){
+   public constructor(){
       this._images      = new Images();
       this._controllers = new Controllers();
       this._controllers.init();
    }
 
-   loader(){
+   public loader(): void{
       this._movement.loader("data", this._loaded.data);
    }
 
-   load(type, data){
+   public load(type: string, data: any): void{
       if(type === "configs"){
          this._configs = data;
       }
@@ -52,12 +60,12 @@ class Game
       }
    }
 
-   init(){
+   public init(): void{
       this._canvas = new Canvas(this._configs);
       this._canvas.init();
       this._context = this._canvas.context();
 
-      this._engine = new Engine();
+      this._engine = new Engine(this._configs);
 
       this._scenes = new Scenes(this._canvas);
       this._scenes.init();
@@ -72,7 +80,7 @@ class Game
       this._draw.init();
    }
 
-   set(type, data){
+   public set(type: string, data: object): void{
       if(type === "data"){
          this._loaded.data = this._scenes.set(data);
       }
@@ -82,7 +90,7 @@ class Game
       }
    }
 
-   frames(){
+   protected frames(): void{
       this._collision.flag(false);
 
       this._movement.loader("data", this._loaded.data);
@@ -94,7 +102,7 @@ class Game
       requestAnimationFrame(this.frames.bind(this));
    }
 
-   start(){
+   public start(): void{
       this._controllers.listener();
       this.frames();
    }

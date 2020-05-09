@@ -1,34 +1,32 @@
-"use strict";
-
-class Draw
+export  class Draw
 {
 
-   _canvas;
-   _context;
+   protected _canvas: any;
+   protected _context: any;
 
-   _data;
+   protected _data: any;
 
-   constructor(canvas){
+   public constructor(canvas: any){
       this._canvas = canvas;
    }
 
-   init(){
+   public init(): void{
       this._context = this._canvas.context();
    }
 
-   loader(data){
+   public loader(data: any): void{
       this._data = data;
    }
 
-   clear(){
+   protected clear(): void{
       this._context.clearRect(0, 0, this._canvas.width(), this._canvas.height());
    }
 
-   pattern(object){
+   protected pattern(object: any): void{
       this._context.fillStyle = this._context.createPattern(object.image, "repeat");
    }
 
-   image(object){
+   protected image(object: any): void{
       this._context.drawImage(
          object.image,
          object.position.x,
@@ -38,7 +36,7 @@ class Draw
       );
    }
 
-   start(){
+   public start(): void{
 
       this.clear();
 

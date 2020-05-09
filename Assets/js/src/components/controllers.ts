@@ -1,27 +1,30 @@
-class Controllers
+export class Controllers
 {
 
-   _data;
+   protected _data: any;
 
-   init(){
-      this._data = new Array();
+   public init(): void{
+
    }
 
-   loader(data){
+   public loader(data: any): void{
       this._data[data.key + "-" + data.keyCode] = data.action;
    }
 
-   listener(){
+   public listener(): void{
+
       window.addEventListener("keydown", (key) => {
          if(this._data.hasOwnProperty("keydown-" + key.keyCode) === true){
             this._data["keydown-" + key.keyCode]();
          }
       });
+
       window.addEventListener("keyup", (key) => {
          if(this._data.hasOwnProperty("keyup" + key.keyCode) === true){
             this._data["keyup-" + key.keyCode]()
          }
       });
+
    }
 
 }

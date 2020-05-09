@@ -1,18 +1,17 @@
-"use strict";
-
-class Engine
+export class Engine
 {
-   _configs;
 
-   _gravity;
-   _gravitySpeed;
-   _ground;
+   protected _configs: any;
 
-   constructor(configs){
+   protected _gravity!: number;
+   protected _gravitySpeed!: number;
+   protected _ground: any;
+
+   public constructor(configs: any){
       this._configs = configs;
    }
 
-   init(){
+   public init(): void{
       this._gravity      = this._configs.engine.gravity;
       this._gravitySpeed = 0;
       this._ground = {
@@ -21,18 +20,18 @@ class Engine
       };
    }
 
-   groundDefault(set = null){
+   public groundDefault(set: number | null = null){
       return set != null ? this._ground.default = set : this._ground.default;
    }
 
-   ground(set = null){
+   public ground(set: string | null = null){
       if(set === "default"){
          return this._ground.y = this.groundDefault();
       }
       return set != null ? this._ground.y = set : this._ground.y;
    }
 
-   gravity(y){
+   public gravity(y: number){
 
       if(this.ground() <= y){
          this._gravitySpeed = 0

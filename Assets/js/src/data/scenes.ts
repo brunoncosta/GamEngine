@@ -1,6 +1,4 @@
-"use strict";
-
-function scenes(game){
+export function scenes(game: any): object{
 
    return {
       layer_1: {

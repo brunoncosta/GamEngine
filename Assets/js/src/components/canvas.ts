@@ -1,29 +1,27 @@
-"use strict";
-
-class Canvas
+export class Canvas
 {
 
-   _$game;
-   _context;
+   protected _$game: any;
+   protected _context: any;
 
-   constructor(configs){
+   public constructor(configs: any){
       this._$game   = document.getElementById(configs.canvas.id);
       this._context = this._$game.getContext(configs.canvas.context);
    }
 
-   context(){
+   public context(): object{
       return this._context;
    }
 
-   width(set = null){
+   public width(set: number | null = null): number{
       return set != null ? this._$game.width = set : this._$game.width;
    }
 
-   height(set = null){
+   public height(set: number | null = null): number{
       return set != null ? this._$game.height = set : this._$game.height;
    }
 
-   init(){
+   public init(): void{
       this._$game.width  = window.innerWidth;
       this._$game.height = window.innerHeight;
    }
